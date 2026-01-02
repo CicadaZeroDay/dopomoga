@@ -74,5 +74,8 @@ export const FAQS: FAQItem[] = [
 
 export const SOCIAL_LINKS = {
   telegram: "https://t.me/pasha_grishko",
+  instagram: "https://www.instagram.com/pavgryshko/",
+  youtube: "https://www.youtube.com/channel/UCKp129PGH4OtzxE5-XfZ86g",
+  tiktok: "https://www.tiktok.com/@gpv585",
   calendar: "#book"
 };
