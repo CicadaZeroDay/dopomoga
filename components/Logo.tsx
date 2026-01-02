@@ -1,41 +1,106 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+const MotionSvg = motion.svg as any;
+const MotionG = motion.g as any;
+const MotionPath = motion.path as any;
 
 interface LogoProps {
   className?: string;
   size?: number;
   variant?: 'full' | 'horizontal' | 'compact' | 'icon';
   showText?: boolean;
+  animate?: boolean;
 }
+
+// Варіанти анімації
+const swimVariants = {
+  animate: {
+    x: [0, 2, -2, 1, 0],
+    y: [0, -1, 1, -0.5, 0],
+    rotate: [0, 2, -2, 1, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
+
+const pathDrawVariants = {
+  initial: { pathLength: 0, opacity: 0 },
+  animate: {
+    pathLength: 1,
+    opacity: 1,
+    transition: { duration: 1.2, ease: "easeInOut" }
+  }
+};
+
+const tailWagVariants = {
+  animate: {
+    rotate: [0, 10, -10, 5, 0],
+    transition: {
+      duration: 1.5,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
 
 const Logo: React.FC<LogoProps> = ({
   className = '',
   size = 48,
   variant = 'icon',
-  showText = false
+  showText = false,
+  animate = true
 }) => {
   // Цвета из палитры
   const primaryColor = '#5B8A72';
   const lightColor = '#FBF9F7';
 
   if (variant === 'icon') {
-    // Иконка - форма ихтис с хвостом
+    // Иконка - форма ихтис с хвостом с анімацією
     return (
-      <svg
+      <MotionSvg
         width={size}
         height={size}
         viewBox="0 0 32 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        initial="initial"
+        animate="animate"
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        variants={animate ? swimVariants : undefined}
       >
-        <g stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <MotionG
+          stroke="currentColor"
+          strokeWidth="2.5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           {/* Тело ихтис */}
-          <path d="M7 16 Q16 7 25 16 Q16 25 7 16"/>
-          {/* Хвост */}
-          <path d="M25 16 L29 12"/>
-          <path d="M25 16 L29 20"/>
-        </g>
-      </svg>
+          <MotionPath
+            d="M7 16 Q16 7 25 16 Q16 25 7 16"
+            variants={pathDrawVariants}
+          />
+          {/* Хвост з анімацією */}
+          <MotionG
+            style={{ originX: '25px', originY: '16px' }}
+            variants={tailWagVariants}
+          >
+            <MotionPath
+              d="M25 16 L29 12"
+              variants={pathDrawVariants}
+            />
+            <MotionPath
+              d="M25 16 L29 20"
+              variants={pathDrawVariants}
+            />
+          </MotionG>
+        </MotionG>
+      </MotionSvg>
     );
   }
 
