@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80">
+  <defs>
+    <!-- Форма рыбы -->
+    <path id="fish-shape" d="M30 0 
+                             C30 -10, 15 -15, 0 -12 
+                             C-12 -8, -18 -3, -18 0 
+                             C-18 3, -12 8, 0 12 
+                             C15 15, 30 10, 30 0 Z 
+                             M-18 0 L-28 -8 L-28 8 Z"/>
+    
+    <!-- Glow эффект -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Круг с рыбами (60x60) -->
+  <g transform="translate(30, 10)">
+    <!-- Фоновый круг -->
+    <circle cx="30" cy="30" r="28" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.2"/>
+    
+    <!-- Серые рыбы -->
+    <g fill="#6B7B8A" opacity="0.5">
+      <use href="#fish-shape" transform="translate(30, 10) rotate(90) scale(0.25)"/>
+      <use href="#fish-shape" transform="translate(50, 20) rotate(135) scale(0.22)"/>
+      <use href="#fish-shape" transform="translate(55, 30) rotate(180) scale(0.25)"/>
+      <use href="#fish-shape" transform="translate(50, 40) rotate(225) scale(0.22)"/>
+      <use href="#fish-shape" transform="translate(30, 50) rotate(270) scale(0.25)"/>
+      <use href="#fish-shape" transform="translate(10, 40) rotate(315) scale(0.22)"/>
+      <use href="#fish-shape" transform="translate(5, 30) rotate(0) scale(0.25)"/>
+      <use href="#fish-shape" transform="translate(10, 20) rotate(45) scale(0.22)"/>
+    </g>
+    
+    <!-- Бирюзовая рыба -->
+    <g fill="#00D4AA" filter="url(#glow)" opacity="0.9">
+      <use href="#fish-shape" transform="translate(40, 30) rotate(0) scale(0.3)"/>
+    </g>
+  </g>
+  
+  <!-- Текст -->
+  <text 
+    x="100" 
+    y="50" 
+    font-family="Inter, sans-serif" 
+    font-size="28" 
+    font-weight="600" 
+    fill="#1A1A2E" 
+    letter-spacing="0.5"
+  >
+    dopomoga.me
+  </text>
+</svg>
+

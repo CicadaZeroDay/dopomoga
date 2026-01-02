@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40">
+  <defs>
+    <!-- Форма рыбы -->
+    <path id="fish-shape" d="M30 0 
+                             C30 -10, 15 -15, 0 -12 
+                             C-12 -8, -18 -3, -18 0 
+                             C-18 3, -12 8, 0 12 
+                             C15 15, 30 10, 30 0 Z 
+                             M-18 0 L-28 -8 L-28 8 Z"/>
+    
+    <!-- Glow эффект -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Бирюзовая рыба (плывёт вправо) -->
+  <g fill="#00D4AA" filter="url(#glow)" transform="translate(5, 10)">
+    <use href="#fish-shape" transform="scale(0.4)"/>
+  </g>
+  
+  <!-- Текст -->
+  <text 
+    x="50" 
+    y="28" 
+    font-family="Inter, sans-serif" 
+    font-size="18" 
+    font-weight="600" 
+    fill="#1A1A2E" 
+    letter-spacing="0.3"
+  >
+    dopomoga
+  </text>
+</svg>
+

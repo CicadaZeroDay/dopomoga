@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <!-- Форма рыбы (базовая) -->
+    <path id="fish-shape-white" d="M30 0 
+                             C30 -10, 15 -15, 0 -12 
+                             C-12 -8, -18 -3, -18 0 
+                             C-18 3, -12 8, 0 12 
+                             C15 15, 30 10, 30 0 Z 
+                             M-18 0 L-28 -8 L-28 8 Z"/>
+    
+    <!-- Glow эффект для бирюзовой рыбы -->
+    <filter id="glow-white" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Фоновый круг (опционально, тонкий) -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#F8F6F2" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Серые рыбы (плывут по часовой стрелке) - светлее для тёмного фона -->
+  <g fill="#9CA3AF" opacity="0.6">
+    <!-- Верх -->
+    <use href="#fish-shape-white" transform="translate(100, 25) rotate(90) scale(0.35)"/>
+    <!-- Верх-право -->
+    <use href="#fish-shape-white" transform="translate(155, 50) rotate(135) scale(0.3)"/>
+    <!-- Право -->
+    <use href="#fish-shape-white" transform="translate(175, 100) rotate(180) scale(0.35)"/>
+    <!-- Низ-право -->
+    <use href="#fish-shape-white" transform="translate(155, 150) rotate(225) scale(0.3)"/>
+    <!-- Низ -->
+    <use href="#fish-shape-white" transform="translate(100, 175) rotate(270) scale(0.35)"/>
+    <!-- Низ-лево -->
+    <use href="#fish-shape-white" transform="translate(45, 150) rotate(315) scale(0.3)"/>
+    <!-- Лево -->
+    <use href="#fish-shape-white" transform="translate(25, 100) rotate(0) scale(0.35)"/>
+    <!-- Верх-лево -->
+    <use href="#fish-shape-white" transform="translate(45, 50) rotate(45) scale(0.3)"/>
+  </g>
+  
+  <!-- Бирюзовая рыба (плывёт против течения) -->
+  <g fill="#00D4AA" filter="url(#glow-white)" opacity="0.9">
+    <use href="#fish-shape-white" transform="translate(130, 100) rotate(0) scale(0.45)"/>
+  </g>
+  
+  <!-- Текст (для тёмного фона) -->
+  <text 
+    x="100" 
+    y="195" 
+    font-family="Inter, sans-serif" 
+    font-size="14" 
+    font-weight="500" 
+    fill="#F8F6F2" 
+    text-anchor="middle"
+    opacity="0.8"
+  >
+    dopomoga.me
+  </text>
+</svg>
+
