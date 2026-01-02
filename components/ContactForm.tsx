@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Shield, AlertCircle, Heart } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { saveLead } from '../lib/supabase';
+import { getUTMParams, UTMParams } from '../lib/utm';
 
 const MotionDiv = motion.div as any;
 
@@ -39,10 +41,16 @@ const SuccessCheckmark: React.FC = () => (
 );
 
 const ContactForm: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [contact, setContact] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
+  const [utmParams, setUtmParams] = useState<UTMParams>({});
+
+  // Сохраняем UTM параметры при загрузке
+  useEffect(() => {
+    setUtmParams(getUTMParams());
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,8 +62,16 @@ const ContactForm: React.FC = () => {
     const text = `📩 Нове повідомлення з dopomoga.me\n\n👤 Контакт: ${contact}\n\n💬 Повідомлення:\n${message}`;
 
     try {
-      // Отправляем на все ID параллельно
-      const promises = TELEGRAM_CHAT_IDS.map(chatId =>
+      // Сохраняем в Supabase (параллельно с Telegram)
+      const supabasePromise = saveLead({
+        contact: contact.trim(),
+        message: message.trim(),
+        language,
+        ...utmParams,
+      });
+
+      // Отправляем в Telegram на все ID параллельно
+      const telegramPromises = TELEGRAM_CHAT_IDS.map(chatId =>
         fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -67,13 +83,24 @@ const ContactForm: React.FC = () => {
         })
       );
 
-      const responses = await Promise.all(promises);
-      const allOk = responses.every(r => r.ok);
+      // Ждём все запросы
+      const [supabaseResult, ...telegramResponses] = await Promise.all([
+        supabasePromise,
+        ...telegramPromises,
+      ]);
 
-      if (allOk) {
+      const telegramOk = telegramResponses.every(r => r.ok);
+
+      // Успех если Telegram отправился (Supabase - бонус)
+      if (telegramOk) {
         setStatus('success');
         setContact('');
         setMessage('');
+
+        // Логируем если Supabase не сработал
+        if (!supabaseResult.success) {
+          console.warn('Supabase save failed:', supabaseResult.error);
+        }
       } else {
         setStatus('error');
         setTimeout(() => setStatus('idle'), 5000);
