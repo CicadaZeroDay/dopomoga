@@ -1,0 +1,7 @@
+# robots.txt for dopomoga.me
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://dopomoga.me/sitemap.xml

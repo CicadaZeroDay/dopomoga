@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import BackgroundAnimation from './BackgroundAnimation';
 import Logo from './Logo';
-import { Shield, Heart, MessageCircle } from 'lucide-react';
+import { Shield, Heart, MessageCircle, BookOpen } from 'lucide-react';
 import { useLanguage, Language } from '../contexts/LanguageContext';
 import { EXPERT_IMAGE } from '../constants';
 
@@ -56,14 +57,23 @@ const Hero: React.FC = () => {
             ))}
           </div>
 
-          {/* CTA Button - Subtle */}
-          <button
-            onClick={scrollToForm}
-            className="hidden md:flex items-center gap-2 px-5 py-2 text-primary text-sm font-medium rounded-full border border-primary/20 hover:bg-primary/5 transition-all duration-300"
-          >
-            <MessageCircle className="w-4 h-4" />
-            {t('nav.book')}
-          </button>
+          {/* Nav Links */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link
+              to="/blog"
+              className="flex items-center gap-2 px-4 py-2 text-textMuted hover:text-primary text-sm font-medium transition-colors"
+            >
+              <BookOpen className="w-4 h-4" />
+              Блог
+            </Link>
+            <button
+              onClick={scrollToForm}
+              className="flex items-center gap-2 px-5 py-2 text-primary text-sm font-medium rounded-full border border-primary/20 hover:bg-primary/5 transition-all duration-300"
+            >
+              <MessageCircle className="w-4 h-4" />
+              {t('nav.book')}
+            </button>
+          </div>
         </div>
       </nav>
 

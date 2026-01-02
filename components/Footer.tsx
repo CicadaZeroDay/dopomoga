@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { SOCIAL_LINKS } from '../constants';
-import { Instagram, Send, Mail, Youtube } from 'lucide-react';
+import { Instagram, Send, Mail, Youtube, BookOpen } from 'lucide-react';
 
 // TikTok иконка (нет в lucide-react)
 const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -17,7 +18,14 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-white/10 pb-12">
           <div className="mb-8 md:mb-0 text-center md:text-left">
             <h3 className="text-2xl font-bold text-white mb-2">dopomoga.me</h3>
-            <p className="text-sm">Твоя душа, наша турбота</p>
+            <p className="text-sm mb-4">Твоя душа, наша турбота</p>
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-secondary transition-colors text-sm"
+            >
+              <BookOpen className="w-4 h-4" />
+              Читати блог
+            </Link>
           </div>
 
           <div className="flex gap-5">
