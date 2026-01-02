@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
               className="flex items-center gap-2 px-4 py-2 text-textMuted hover:text-primary text-sm font-medium transition-colors"
             >
               <BookOpen className="w-4 h-4" />
-              Блог
+              {t('nav.blog')}
             </Link>
             <button
               onClick={scrollToForm}
@@ -109,9 +109,9 @@ const Hero: React.FC = () => {
             >
               {/* Description */}
               <p className="text-textMuted text-lg leading-relaxed">
-                Безпечний простір для розмови про те, що турбує.
+                {t('hero.description1')}
                 <br className="hidden sm:block" />
-                Без осуду. Анонімно. Безкоштовно.
+                {t('hero.description2')}
               </p>
             </MotionDiv>
 
@@ -126,19 +126,19 @@ const Hero: React.FC = () => {
                 <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                   <Shield className="w-4 h-4 text-primary" />
                 </div>
-                <span>Анонімно</span>
+                <span>{t('hero.anonymous')}</span>
               </div>
               <div className="flex items-center gap-2 text-textMuted text-sm">
                 <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                   <Heart className="w-4 h-4 text-primary" />
                 </div>
-                <span>Без осуду</span>
+                <span>{t('hero.noJudgment')}</span>
               </div>
               <div className="flex items-center gap-2 text-textMuted text-sm">
                 <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
                   <span className="text-secondary text-xs font-bold">₴0</span>
                 </div>
-                <span>Безкоштовно</span>
+                <span>{t('hero.free')}</span>
               </div>
             </MotionDiv>
 
@@ -175,7 +175,7 @@ const Hero: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/10 ring-1 ring-black/5">
                 <img
                   src={EXPERT_IMAGE}
-                  alt="Паша"
+                  alt={t('hero.photoAlt')}
                   onError={handleImageError}
                   className="w-auto h-[450px] md:h-[550px] object-cover object-top"
                 />
@@ -192,7 +192,7 @@ const Hero: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-textDark text-sm">100+</p>
-                    <p className="text-textMuted text-xs">отримали підтримку</p>
+                    <p className="text-textMuted text-xs">{t('hero.supported')}</p>
                   </div>
                 </div>
               </div>

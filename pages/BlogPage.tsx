@@ -12,7 +12,7 @@ import { getArticles, getCategories, formatDate, getLocalizedField, Article } fr
 const MotionDiv = motion.div as any;
 
 const BlogPage: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [articles, setArticles] = useState<Article[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -76,7 +76,7 @@ const BlogPage: React.FC = () => {
             to="/"
             className="text-primary hover:text-primary/80 font-medium transition-colors"
           >
-            ← На головну
+            {t('nav.backHome')}
           </Link>
         </div>
       </nav>
@@ -109,7 +109,7 @@ const BlogPage: React.FC = () => {
                     : 'bg-white text-textMuted hover:bg-gray-50'
                 }`}
               >
-                Всі
+                {t('blog.all')}
               </button>
               {categories.map((cat) => (
                 <button
@@ -182,7 +182,7 @@ const BlogPage: React.FC = () => {
 
                         {/* Read more */}
                         <div className="mt-4 flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
-                          Читати далі
+                          {t('blog.readMore')}
                           <ArrowRight className="w-4 h-4" />
                         </div>
                       </div>
@@ -194,11 +194,7 @@ const BlogPage: React.FC = () => {
           ) : (
             <div className="text-center py-20">
               <p className="text-textMuted text-lg">
-                {language === 'uk'
-                  ? 'Поки що немає статей. Скоро тут з\'являться корисні матеріали!'
-                  : language === 'ru'
-                  ? 'Пока нет статей. Скоро здесь появятся полезные материалы!'
-                  : 'No articles yet. Useful content coming soon!'}
+                {t('blog.noArticles')}
               </p>
             </div>
           )}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SOCIAL_LINKS } from '../constants';
 import { Instagram, Send, Mail, Youtube, BookOpen } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // TikTok иконка (нет в lucide-react)
 const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -11,6 +12,8 @@ const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-primary pt-20 pb-10 text-white/60">
       <div className="container mx-auto px-4">
@@ -18,13 +21,13 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-white/10 pb-12">
           <div className="mb-8 md:mb-0 text-center md:text-left">
             <h3 className="text-2xl font-bold text-white mb-2">dopomoga.me</h3>
-            <p className="text-sm mb-4">Твоя душа, наша турбота</p>
+            <p className="text-sm mb-4">{t('footer.tagline')}</p>
             <Link
               to="/blog"
               className="inline-flex items-center gap-2 text-white/80 hover:text-secondary transition-colors text-sm"
             >
               <BookOpen className="w-4 h-4" />
-              Читати блог
+              {t('footer.readBlog')}
             </Link>
           </div>
 
@@ -48,7 +51,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="text-center text-xs">
-          <p>&copy; {new Date().getFullYear()} dopomoga.me. Всі права захищено.</p>
+          <p>&copy; {new Date().getFullYear()} dopomoga.me. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>

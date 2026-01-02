@@ -16,9 +16,31 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': 'Лідер домашньої групи • Служіння залежним',
     'hero.cta': 'Написати мені',
     'hero.badge': 'Анонімно • Без осуду • Просто підтримка',
+    'hero.description1': 'Безпечний простір для розмови про те, що турбує.',
+    'hero.description2': 'Без осуду. Анонімно. Безкоштовно.',
+    'hero.anonymous': 'Анонімно',
+    'hero.noJudgment': 'Без осуду',
+    'hero.free': 'Безкоштовно',
+    'hero.photoAlt': 'Паша',
+    'hero.supported': 'отримали підтримку',
 
     // Nav
     'nav.book': 'Записатися',
+    'nav.blog': 'Блог',
+    'nav.home': 'Головна',
+    'nav.backHome': '← На головну',
+
+    // Blog
+    'blog.all': 'Всі',
+    'blog.readMore': 'Читати далі',
+    'blog.noArticles': 'Поки що немає статей. Скоро тут з\'являться корисні матеріали!',
+
+    // Article
+    'article.toc': 'Зміст',
+    'article.readTime': 'хв читання',
+    'article.share': 'Поділитись',
+    'article.related': 'Схожі статті',
+    'article.linkCopied': 'Посилання скопійовано!',
 
     // Form
     'form.title': 'Напиши мені',
@@ -39,6 +61,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.quote': '«Прийдіть до Мене, всі втомлені й обтяжені, і Я заспокою вас.»',
     'footer.quoteSource': '— Матвія 11:28',
+    'footer.tagline': 'Твоя душа, наша турбота',
+    'footer.readBlog': 'Читати блог',
+    'footer.rights': 'Всі права захищено.',
   },
   ru: {
     // Hero
@@ -47,9 +72,31 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': 'Лидер домашней группы • Служение зависимым',
     'hero.cta': 'Написать мне',
     'hero.badge': 'Анонимно • Без осуждения • Просто поддержка',
+    'hero.description1': 'Безопасное пространство для разговора о том, что беспокоит.',
+    'hero.description2': 'Без осуждения. Анонимно. Бесплатно.',
+    'hero.anonymous': 'Анонимно',
+    'hero.noJudgment': 'Без осуждения',
+    'hero.free': 'Бесплатно',
+    'hero.photoAlt': 'Паша',
+    'hero.supported': 'получили поддержку',
 
     // Nav
     'nav.book': 'Записаться',
+    'nav.blog': 'Блог',
+    'nav.home': 'Главная',
+    'nav.backHome': '← На главную',
+
+    // Blog
+    'blog.all': 'Все',
+    'blog.readMore': 'Читать далее',
+    'blog.noArticles': 'Пока нет статей. Скоро здесь появятся полезные материалы!',
+
+    // Article
+    'article.toc': 'Содержание',
+    'article.readTime': 'мин чтения',
+    'article.share': 'Поделиться',
+    'article.related': 'Похожие статьи',
+    'article.linkCopied': 'Ссылка скопирована!',
 
     // Form
     'form.title': 'Напиши мне',
@@ -70,6 +117,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.quote': '«Придите ко Мне, все труждающиеся и обременённые, и Я успокою вас.»',
     'footer.quoteSource': '— Матфея 11:28',
+    'footer.tagline': 'Твоя душа, наша забота',
+    'footer.readBlog': 'Читать блог',
+    'footer.rights': 'Все права защищены.',
   },
   en: {
     // Hero
@@ -78,9 +128,31 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.subtitle': 'Home group leader • Addiction ministry',
     'hero.cta': 'Write to me',
     'hero.badge': 'Anonymous • No judgment • Just support',
+    'hero.description1': 'A safe space to talk about what troubles you.',
+    'hero.description2': 'No judgment. Anonymous. Free.',
+    'hero.anonymous': 'Anonymous',
+    'hero.noJudgment': 'No judgment',
+    'hero.free': 'Free',
+    'hero.photoAlt': 'Pasha',
+    'hero.supported': 'received support',
 
     // Nav
     'nav.book': 'Book a call',
+    'nav.blog': 'Blog',
+    'nav.home': 'Home',
+    'nav.backHome': '← Back home',
+
+    // Blog
+    'blog.all': 'All',
+    'blog.readMore': 'Read more',
+    'blog.noArticles': 'No articles yet. Useful content coming soon!',
+
+    // Article
+    'article.toc': 'Contents',
+    'article.readTime': 'min read',
+    'article.share': 'Share',
+    'article.related': 'Related articles',
+    'article.linkCopied': 'Link copied!',
 
     // Form
     'form.title': 'Write to me',
@@ -101,6 +173,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.quote': '"Come to Me, all who are weary and burdened, and I will give you rest."',
     'footer.quoteSource': '— Matthew 11:28',
+    'footer.tagline': 'Your soul, our care',
+    'footer.readBlog': 'Read blog',
+    'footer.rights': 'All rights reserved.',
   },
 };
 

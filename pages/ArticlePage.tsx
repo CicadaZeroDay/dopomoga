@@ -63,7 +63,7 @@ function markdownToHtml(content: string): string {
 const ArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [article, setArticle] = useState<Article | null>(null);
   const [relatedArticles, setRelatedArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
@@ -125,7 +125,7 @@ const ArticlePage: React.FC = () => {
       });
     } else {
       navigator.clipboard.writeText(articleUrl);
-      alert('Посилання скопійовано!');
+      alert(t('article.linkCopied'));
     }
   };
 
@@ -176,7 +176,7 @@ const ArticlePage: React.FC = () => {
             className="text-primary hover:text-primary/80 font-medium transition-colors flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
-            Блог
+            {t('nav.blog')}
           </Link>
         </div>
       </nav>
@@ -193,11 +193,11 @@ const ArticlePage: React.FC = () => {
             {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-textMuted mb-6">
               <Link to="/" className="hover:text-primary">
-                Головна
+                {t('nav.home')}
               </Link>
               <span>/</span>
               <Link to="/blog" className="hover:text-primary">
-                Блог
+                {t('nav.blog')}
               </Link>
               <span>/</span>
               <span className="text-textDark">{title}</span>
@@ -228,14 +228,14 @@ const ArticlePage: React.FC = () => {
               </span>
               <span className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                {readingTime} хв читання
+                {readingTime} {t('article.readTime')}
               </span>
               <button
                 onClick={handleShare}
                 className="flex items-center gap-2 hover:text-primary transition-colors ml-auto"
               >
                 <Share2 className="w-4 h-4" />
-                Поділитись
+                {t('article.share')}
               </button>
             </div>
           </MotionDiv>
@@ -264,7 +264,7 @@ const ArticlePage: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="bg-white rounded-xl p-6 mb-10 shadow-sm"
             >
-              <h2 className="font-display font-bold text-textDark mb-4">Зміст</h2>
+              <h2 className="font-display font-bold text-textDark mb-4">{t('article.toc')}</h2>
               <nav className="space-y-2">
                 {toc.map((item) => (
                   <a
@@ -310,7 +310,7 @@ const ArticlePage: React.FC = () => {
           {relatedArticles.length > 0 && (
             <div className="mt-16">
               <h2 className="text-2xl font-display font-bold text-textDark mb-8">
-                Схожі статті
+                {t('article.related')}
               </h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedArticles.map((related) => (
