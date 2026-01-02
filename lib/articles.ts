@@ -61,6 +61,8 @@ export async function getArticles(limit?: number): Promise<Article[]> {
 
 // Get article by slug
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  console.log('Fetching article with slug:', slug);
+
   const { data, error } = await supabase
     .from('articles')
     .select('*')
@@ -70,9 +72,11 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
 
   if (error) {
     console.error('Error fetching article:', error);
+    console.error('Slug was:', slug);
     return null;
   }
 
+  console.log('Article found:', data?.title);
   return data;
 }
 
