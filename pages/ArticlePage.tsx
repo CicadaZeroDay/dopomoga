@@ -50,6 +50,9 @@ function markdownToHtml(content: string): string {
   const checkIcon = `<svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`;
 
   return content
+    // Images → Styled image blocks with caption
+    .replace(/^!\[(.+?)\]\((.+?)\)$/gm, `<figure class="my-10"><img src="$2" alt="$1" class="w-full rounded-2xl shadow-lg" /><figcaption class="text-center text-sm text-textMuted mt-3 italic">$1</figcaption></figure>`)
+
     // Horizontal rules → Decorative fish divider
     .replace(/^---$/gm, fishDivider)
 
