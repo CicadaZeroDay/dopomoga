@@ -1,11 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { REVIEWS } from '../constants';
-import { Star } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const MotionH2 = motion.h2 as any;
 const MotionDiv = motion.div as any;
+
+// Gradient avatars based on name
+const GRADIENTS = [
+  'from-blue-400 to-purple-500',
+  'from-green-400 to-teal-500',
+  'from-orange-400 to-pink-500',
+  'from-indigo-400 to-blue-500',
+  'from-rose-400 to-red-500',
+];
+
+const getGradient = (name: string) => {
+  const index = name.charCodeAt(0) % GRADIENTS.length;
+  return GRADIENTS[index];
+};
 
 const Testimonials: React.FC = () => {
   const { t } = useLanguage();
@@ -30,8 +44,11 @@ const Testimonials: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 max-w-md flex-1 min-w-[300px]"
+              className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 max-w-md flex-1 min-w-[300px] relative"
             >
+              {/* Quote icon */}
+              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10" />
+
               <div className="flex gap-1 text-accent mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-current" />
@@ -39,7 +56,8 @@ const Testimonials: React.FC = () => {
               </div>
               <p className="text-textDark/80 mb-6 italic min-h-[80px]">"{review.text}"</p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold">
+                {/* Gradient avatar */}
+                <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${getGradient(review.author)} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
                   {review.author[0]}
                 </div>
                 <div>

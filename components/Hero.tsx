@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import BackgroundAnimation from './BackgroundAnimation';
 import Logo from './Logo';
-import { Shield, Heart, MessageCircle, BookOpen, ChevronDown } from 'lucide-react';
+import { Shield, Heart, MessageCircle, BookOpen, ChevronDown, Send } from 'lucide-react';
 import { useLanguage, Language } from '../contexts/LanguageContext';
-import { EXPERT_IMAGE } from '../constants';
+import { EXPERT_IMAGE, SOCIAL_LINKS } from '../constants';
 
 const MotionDiv = motion.div as any;
 
@@ -172,13 +172,24 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-10"
             >
-              <button
-                onClick={scrollToForm}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5"
-              >
-                <MessageCircle className="w-5 h-5" />
-                {t('hero.cta')}
-              </button>
+              <div className="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
+                <button
+                  onClick={scrollToForm}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  {t('hero.cta')}
+                </button>
+                <a
+                  href={SOCIAL_LINKS.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-4 bg-white hover:bg-gray-50 text-primary font-medium rounded-full transition-all duration-300 border border-primary/20 hover:border-primary/40"
+                >
+                  <Send className="w-5 h-5" />
+                  Telegram
+                </a>
+              </div>
             </MotionDiv>
           </div>
 

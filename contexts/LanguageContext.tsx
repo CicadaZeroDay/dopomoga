@@ -106,6 +106,19 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.tagline': 'Твоя душа, наша турбота',
     'footer.readBlog': 'Читати блог',
     'footer.rights': 'Всі права захищено.',
+    'footer.subscribeTitle': 'Отримуй підтримку',
+    'footer.subscribeDesc': 'Підпишись на корисні матеріали та надихаючі повідомлення',
+    'footer.subscribeSuccess': 'Дякую! Ви підписані.',
+    'footer.emailPlaceholder': 'Ваш email',
+
+    // Floating CTA
+    'floatingCta.text': 'Написати',
+
+    // Stats
+    'stats.supported': 'Людей отримали підтримку',
+    'stats.years': 'Років досвіду',
+    'stats.countries': 'Країн',
+    'stats.available': 'Доступність',
   },
   ru: {
     // Hero
@@ -204,6 +217,19 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.tagline': 'Твоя душа, наша забота',
     'footer.readBlog': 'Читать блог',
     'footer.rights': 'Все права защищены.',
+    'footer.subscribeTitle': 'Получай поддержку',
+    'footer.subscribeDesc': 'Подпишись на полезные материалы и вдохновляющие сообщения',
+    'footer.subscribeSuccess': 'Спасибо! Вы подписаны.',
+    'footer.emailPlaceholder': 'Ваш email',
+
+    // Floating CTA
+    'floatingCta.text': 'Написать',
+
+    // Stats
+    'stats.supported': 'Людей получили поддержку',
+    'stats.years': 'Лет опыта',
+    'stats.countries': 'Стран',
+    'stats.available': 'Доступность',
   },
   en: {
     // Hero
@@ -302,6 +328,19 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.tagline': 'Your soul, our care',
     'footer.readBlog': 'Read blog',
     'footer.rights': 'All rights reserved.',
+    'footer.subscribeTitle': 'Get support',
+    'footer.subscribeDesc': 'Subscribe for helpful content and inspiring messages',
+    'footer.subscribeSuccess': 'Thank you! You are subscribed.',
+    'footer.emailPlaceholder': 'Your email',
+
+    // Floating CTA
+    'floatingCta.text': 'Write',
+
+    // Stats
+    'stats.supported': 'People received support',
+    'stats.years': 'Years of experience',
+    'stats.countries': 'Countries',
+    'stats.available': 'Availability',
   },
 };
 

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SOCIAL_LINKS } from '../constants';
-import { Instagram, Send, Mail, Youtube, BookOpen } from 'lucide-react';
+import { Instagram, Send, Mail, Youtube, BookOpen, ArrowRight, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { supabase } from '../lib/supabase';
 
 // TikTok иконка (нет в lucide-react)
 const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -13,12 +14,61 @@ const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await supabase.from('subscribers').insert([{ email }]);
+      setIsSubscribed(true);
+      setEmail('');
+    } catch (error) {
+      console.error('Subscription error:', error);
+    }
+    setIsSubmitting(false);
+  };
 
   return (
     <footer className="bg-primary pt-20 pb-10 text-white/60">
       <div className="container mx-auto px-4">
 
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-white/10 pb-12">
+        {/* Email Subscription */}
+        <div className="max-w-xl mx-auto mb-16 text-center">
+          <h3 className="text-xl font-semibold text-white mb-2">{t('footer.subscribeTitle')}</h3>
+          <p className="text-sm mb-6">{t('footer.subscribeDesc')}</p>
+
+          {isSubscribed ? (
+            <div className="flex items-center justify-center gap-2 text-secondary">
+              <Check className="w-5 h-5" />
+              <span>{t('footer.subscribeSuccess')}</span>
+            </div>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={t('footer.emailPlaceholder')}
+                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-secondary transition-colors"
+                required
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-6 py-3 bg-secondary hover:bg-secondary/90 text-primary font-medium rounded-full transition-colors flex items-center gap-2 disabled:opacity-50"
+              >
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </form>
+          )}
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-t border-white/10 pt-12">
           <div className="mb-8 md:mb-0 text-center md:text-left">
             <h3 className="text-2xl font-bold text-white mb-2">dopomoga.me</h3>
             <p className="text-sm mb-4">{t('footer.tagline')}</p>
