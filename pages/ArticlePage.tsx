@@ -41,23 +41,50 @@ function calculateReadingTime(content: string): number {
   return Math.ceil(words / wordsPerMinute);
 }
 
-// Simple markdown to HTML (basic)
+// Enhanced markdown to HTML with beautiful styling
 function markdownToHtml(content: string): string {
+  // SVG icons as inline strings
+  const quoteIcon = `<svg class="w-8 h-8 text-primary/30 mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>`;
+  const bibleIcon = `<svg class="w-5 h-5 text-primary flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M12 6v8"/><path d="M8 10h8"/></svg>`;
+  const fishDivider = `<div class="flex items-center justify-center my-10 gap-4"><div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-primary/30 flex-1"></div><svg width="32" height="16" viewBox="0 0 32 16" class="text-primary/40"><path d="M4 8 Q12 2 20 8 Q12 14 4 8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M20 8 L26 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M20 8 L26 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div class="h-px bg-gradient-to-l from-transparent via-primary/30 to-primary/30 flex-1"></div></div>`;
+  const checkIcon = `<svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
   return content
-    // Headers
-    .replace(/^### (.+)$/gm, '<h3 id="$1" class="text-xl font-bold mt-8 mb-4 text-textDark">$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2 id="$1" class="text-2xl font-bold mt-10 mb-4 text-textDark">$1</h2>')
-    // Bold & Italic
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Horizontal rules → Decorative fish divider
+    .replace(/^---$/gm, fishDivider)
+
+    // Blockquotes → Styled quote blocks
+    .replace(/^>\s*[«"](.+?)[»"](.*)$/gm, `<blockquote class="relative bg-gradient-to-r from-primary/5 to-transparent border-l-4 border-primary rounded-r-xl p-6 my-8">${quoteIcon}<p class="text-lg text-textDark italic leading-relaxed">«$1»</p><cite class="block mt-2 text-sm text-textMuted not-italic">$2</cite></blockquote>`)
+    .replace(/^>\s*(.+)$/gm, `<blockquote class="relative bg-gradient-to-r from-primary/5 to-transparent border-l-4 border-primary rounded-r-xl p-6 my-8"><p class="text-textDark italic leading-relaxed">$1</p></blockquote>`)
+
+    // Headers with accent styling
+    .replace(/^### (.+)$/gm, '<h3 class="flex items-center gap-3 text-xl font-bold mt-8 mb-4 text-textDark"><span class="w-2 h-2 rounded-full bg-secondary"></span>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 class="relative text-2xl font-bold mt-12 mb-6 text-textDark pl-4 border-l-4 border-primary">$1</h2>')
+
+    // Numbered lists (1. 2. 3.)
+    .replace(/^(\d+)\.\s+\*\*(.+?)\*\*\n(.+)$/gm, `<div class="flex gap-4 my-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100"><span class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">$1</span><div><strong class="text-textDark block mb-1">$2</strong><span class="text-textMuted">$3</span></div></div>`)
+    .replace(/^(\d+)\.\s+(.+)$/gm, `<div class="flex gap-3 items-start my-3"><span class="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-semibold">$1</span><span class="text-textMuted leading-relaxed">$2</span></div>`)
+
+    // Bold text
+    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-textDark font-semibold">$1</strong>')
+
+    // Italic text
+    .replace(/\*(.+?)\*/g, '<em class="text-primary/80">$1</em>')
+
     // Links
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>')
-    // Lists
-    .replace(/^- (.+)$/gm, '<li class="ml-4">$1</li>')
-    // Paragraphs
-    .replace(/^(?!<[h|l|u])(.+)$/gm, '<p class="mb-4 text-textMuted leading-relaxed">$1</p>')
-    // Clean up list items
-    .replace(/(<li.*<\/li>\n?)+/g, '<ul class="list-disc mb-4 space-y-2">$&</ul>');
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-primary hover:text-primary/70 underline underline-offset-2 transition-colors">$1</a>')
+
+    // Bullet lists with check icons
+    .replace(/^- (.+)$/gm, `<li class="flex gap-3 items-start my-2">${checkIcon}<span class="text-textMuted leading-relaxed">$1</span></li>`)
+
+    // Wrap consecutive list items
+    .replace(/(<li class="flex.*?<\/li>\n?)+/g, '<ul class="my-6 space-y-1">$&</ul>')
+
+    // Paragraphs (must be last)
+    .replace(/^(?!<[hbdlu])(.+)$/gm, '<p class="mb-4 text-textMuted leading-relaxed text-lg">$1</p>')
+
+    // Clean up empty paragraphs
+    .replace(/<p class="[^"]*"><\/p>/g, '');
 }
 
 const ArticlePage: React.FC = () => {
