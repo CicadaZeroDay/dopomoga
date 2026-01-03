@@ -1,8 +1,8 @@
 import { Heart, Home, UserX, CloudFog, Calendar, Video, Sun } from 'lucide-react';
 import { PainPoint, Step, Review, FAQItem } from './types';
 
-// Original photo with background (from public folder)
-export const EXPERT_IMAGE = "/pasha-original.png"; 
+// Expert photo (from public folder)
+export const EXPERT_IMAGE = "/pasha-expert.png"; 
 
 export const PAIN_POINTS: PainPoint[] = [
   { icon: CloudFog, title: 'Тривога, яка не відпускає' },

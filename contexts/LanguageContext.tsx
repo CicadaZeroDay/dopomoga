@@ -30,6 +30,48 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.home': 'Головна',
     'nav.backHome': '← На головну',
 
+    // Pain Points
+    'painPoints.title': 'Тобі знайоме це відчуття?',
+    'painPoints.subtitle': 'Ти не сам. Є хтось, хто розуміє.',
+
+    // Bio
+    'bio.title': 'Хто такий Паша?',
+    'bio.point1': 'Переїхав з України до Великобританії через війну',
+    'bio.point2': 'Підприємець, чоловік, батько',
+    'bio.point3': 'Пастор з досвідом душепопічництва та реабілітації',
+    'bio.point4': 'Спеціалізація: ПТСР, залежності, міграція',
+    'bio.point5': 'Фокус на чоловіках у кризі',
+    'bio.quote': '«Я сам пережив війну, втрату дому, адаптацію на чужині. Знаю, що таке бути підприємцем, чоловіком і батьком у кризі. Тому я тут — щоб пройти цей шлях разом з тобою.»',
+
+    // Specializations
+    'spec.title': 'Чим я можу допомогти',
+    'spec.subtitle': 'Кожна людина унікальна, але деякі виклики об\'єднують нас',
+    'spec.ptsd': 'ПТСР та травми',
+    'spec.ptsdDesc': 'Допомога жертвам війни та насильства',
+    'spec.addiction': 'Залежності',
+    'spec.addictionDesc': 'Алкоголь, наркотики, ігри, порно',
+    'spec.migration': 'Міграція',
+    'spec.migrationDesc': 'Адаптація біженців та іммігрантів',
+    'spec.family': 'Сімейні кризи',
+    'spec.familyDesc': 'Конфлікти, розлучення, виховання',
+    'spec.identity': 'Чоловіча ідентичність',
+    'spec.identityDesc': 'Пошук себе, цілей, сили',
+    'spec.business': 'Підприємці',
+    'spec.businessDesc': 'Стрес, вигорання, баланс',
+
+    // How It Works
+    'howItWorks.title': 'Три простих кроки',
+    'howItWorks.subtitle': 'Шлях до відновлення починається тут',
+    'howItWorks.step1': 'Запишись на бесіду',
+    'howItWorks.step1Desc': 'Обери зручний час. Це безкоштовно.',
+    'howItWorks.step2': 'Поговоримо онлайн',
+    'howItWorks.step2Desc': 'Безпечна відео-розмова наодинці.',
+    'howItWorks.step3': 'Знайдеш мир',
+    'howItWorks.step3Desc': 'Крок за кроком до зцілення.',
+
+    // Testimonials
+    'testimonials.title': 'Що кажуть люди',
+
     // Blog
     'blog.all': 'Всі',
     'blog.readMore': 'Читати далі',
@@ -86,6 +128,48 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.home': 'Главная',
     'nav.backHome': '← На главную',
 
+    // Pain Points
+    'painPoints.title': 'Тебе знакомо это чувство?',
+    'painPoints.subtitle': 'Ты не один. Есть тот, кто понимает.',
+
+    // Bio
+    'bio.title': 'Кто такой Паша?',
+    'bio.point1': 'Переехал из Украины в Великобританию из-за войны',
+    'bio.point2': 'Предприниматель, муж, отец',
+    'bio.point3': 'Пастор с опытом душепопечительства и реабилитации',
+    'bio.point4': 'Специализация: ПТСР, зависимости, миграция',
+    'bio.point5': 'Фокус на мужчинах в кризисе',
+    'bio.quote': '«Я сам пережил войну, потерю дома, адаптацию на чужбине. Знаю, каково быть предпринимателем, мужем и отцом в кризисе. Поэтому я здесь — чтобы пройти этот путь вместе с тобой.»',
+
+    // Specializations
+    'spec.title': 'Чем я могу помочь',
+    'spec.subtitle': 'Каждый человек уникален, но некоторые вызовы объединяют нас',
+    'spec.ptsd': 'ПТСР и травмы',
+    'spec.ptsdDesc': 'Помощь жертвам войны и насилия',
+    'spec.addiction': 'Зависимости',
+    'spec.addictionDesc': 'Алкоголь, наркотики, игры, порно',
+    'spec.migration': 'Миграция',
+    'spec.migrationDesc': 'Адаптация беженцев и иммигрантов',
+    'spec.family': 'Семейные кризисы',
+    'spec.familyDesc': 'Конфликты, разводы, воспитание',
+    'spec.identity': 'Мужская идентичность',
+    'spec.identityDesc': 'Поиск себя, целей, силы',
+    'spec.business': 'Предприниматели',
+    'spec.businessDesc': 'Стресс, выгорание, баланс',
+
+    // How It Works
+    'howItWorks.title': 'Три простых шага',
+    'howItWorks.subtitle': 'Путь к восстановлению начинается здесь',
+    'howItWorks.step1': 'Запишись на беседу',
+    'howItWorks.step1Desc': 'Выбери удобное время. Это бесплатно.',
+    'howItWorks.step2': 'Поговорим онлайн',
+    'howItWorks.step2Desc': 'Безопасный видео-разговор наедине.',
+    'howItWorks.step3': 'Найдёшь покой',
+    'howItWorks.step3Desc': 'Шаг за шагом к исцелению.',
+
+    // Testimonials
+    'testimonials.title': 'Что говорят люди',
+
     // Blog
     'blog.all': 'Все',
     'blog.readMore': 'Читать далее',
@@ -141,6 +225,48 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.home': 'Home',
     'nav.backHome': '← Back home',
+
+    // Pain Points
+    'painPoints.title': 'Does this feel familiar?',
+    'painPoints.subtitle': "You're not alone. Someone understands.",
+
+    // Bio
+    'bio.title': 'Who is Pasha?',
+    'bio.point1': 'Moved from Ukraine to UK due to war',
+    'bio.point2': 'Entrepreneur, husband, father',
+    'bio.point3': 'Pastor with counseling and rehabilitation experience',
+    'bio.point4': 'Specialization: PTSD, addictions, migration',
+    'bio.point5': 'Focus on men in crisis',
+    'bio.quote': '"I myself lived through war, loss of home, adaptation abroad. I know what it\'s like to be an entrepreneur, husband and father in crisis. That\'s why I\'m here — to walk this path together with you."',
+
+    // Specializations
+    'spec.title': 'How I can help',
+    'spec.subtitle': 'Every person is unique, but some challenges unite us',
+    'spec.ptsd': 'PTSD & Trauma',
+    'spec.ptsdDesc': 'Help for war and violence survivors',
+    'spec.addiction': 'Addictions',
+    'spec.addictionDesc': 'Alcohol, drugs, gaming, porn',
+    'spec.migration': 'Migration',
+    'spec.migrationDesc': 'Refugee and immigrant adaptation',
+    'spec.family': 'Family Crisis',
+    'spec.familyDesc': 'Conflicts, divorce, parenting',
+    'spec.identity': 'Male Identity',
+    'spec.identityDesc': 'Finding yourself, purpose, strength',
+    'spec.business': 'Entrepreneurs',
+    'spec.businessDesc': 'Stress, burnout, balance',
+
+    // How It Works
+    'howItWorks.title': 'Three simple steps',
+    'howItWorks.subtitle': 'The path to recovery starts here',
+    'howItWorks.step1': 'Book a conversation',
+    'howItWorks.step1Desc': 'Choose a convenient time. It\'s free.',
+    'howItWorks.step2': 'We talk online',
+    'howItWorks.step2Desc': 'Safe private video call.',
+    'howItWorks.step3': 'Find peace',
+    'howItWorks.step3Desc': 'Step by step to healing.',
+
+    // Testimonials
+    'testimonials.title': 'What people say',
 
     // Blog
     'blog.all': 'All',

@@ -2,21 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { REVIEWS } from '../constants';
 import { Star } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const MotionH2 = motion.h2 as any;
 const MotionDiv = motion.div as any;
 
 const Testimonials: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 bg-light overflow-hidden">
       <div className="container mx-auto px-4">
-        <MotionH2 
+        <MotionH2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="font-display font-semibold text-4xl text-center text-primary mb-16"
         >
-          Що кажуть люди
+          {t('testimonials.title')}
         </MotionH2>
 
         <div className="flex flex-wrap justify-center gap-6">

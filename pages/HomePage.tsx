@@ -1,5 +1,10 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import PainPoints from '../components/PainPoints';
+import Bio from '../components/Bio';
+import Specializations from '../components/Specializations';
+import HowItWorks from '../components/HowItWorks';
+import Testimonials from '../components/Testimonials';
 import BibleQuote from '../components/BibleQuote';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
@@ -16,6 +21,11 @@ const HomePage: React.FC = () => {
       <FAQSchema items={FAQS} />
 
       <Hero />
+      <PainPoints />
+      <Bio />
+      <Specializations />
+      <HowItWorks />
+      <Testimonials />
       <BibleQuote />
       <ContactForm />
       <Footer />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { STEPS } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const MotionDiv = motion.div as any;
 
@@ -10,24 +11,26 @@ const stepVariants = {
 };
 
 const HowItWorks: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 bg-primary text-light relative">
       <div className="container mx-auto px-4">
-        
-        <MotionDiv 
+
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="font-display font-semibold text-4xl md:text-5xl mb-4">
-            Три простих кроки
+            {t('howItWorks.title')}
           </h2>
-          <p className="text-textMuted text-lg">Шлях до відновлення починається тут</p>
+          <p className="text-textMuted text-lg">{t('howItWorks.subtitle')}</p>
         </MotionDiv>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
-          
+
           {/* Connector Line (Desktop) */}
           <div className="hidden md:block absolute top-24 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-transparent via-secondary/50 to-transparent z-0" />
 
@@ -45,10 +48,10 @@ const HowItWorks: React.FC = () => {
                 <step.icon className="w-10 h-10 text-secondary" />
               </div>
               <div className="bg-secondary/10 px-3 py-1 rounded-full text-xs font-bold text-secondary mb-4 tracking-widest uppercase">
-                Крок {step.id}
+                {t(`howItWorks.step${step.id}`)}
               </div>
-              <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-              <p className="text-textMuted leading-relaxed max-w-xs">{step.description}</p>
+              <h3 className="text-2xl font-bold mb-3">{t(`howItWorks.step${step.id}`)}</h3>
+              <p className="text-textMuted leading-relaxed max-w-xs">{t(`howItWorks.step${step.id}Desc`)}</p>
             </MotionDiv>
           ))}
         </div>

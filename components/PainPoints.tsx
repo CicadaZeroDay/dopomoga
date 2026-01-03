@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PAIN_POINTS } from '../constants';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const MotionDiv = motion.div as any;
 
@@ -10,20 +11,22 @@ const itemVariants = {
 };
 
 const PainPoints: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 bg-light text-textDark relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
-        <MotionDiv 
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="font-display font-semibold text-4xl md:text-5xl mb-4 text-primary">
-            Тобі знайоме це відчуття?
+            {t('painPoints.title')}
           </h2>
           <div className="h-1 w-24 bg-accent mx-auto rounded-full" />
         </MotionDiv>
@@ -48,7 +51,7 @@ const PainPoints: React.FC = () => {
           ))}
         </div>
 
-        <MotionDiv 
+        <MotionDiv
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -56,7 +59,7 @@ const PainPoints: React.FC = () => {
           className="text-center mt-16"
         >
           <p className="text-2xl font-display font-medium text-textMuted">
-            Ти не сам. <span className="text-secondary">Є хтось, хто розуміє.</span>
+            {t('painPoints.subtitle')}
           </p>
         </MotionDiv>
       </div>
