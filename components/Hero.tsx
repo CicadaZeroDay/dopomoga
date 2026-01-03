@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import BackgroundAnimation from './BackgroundAnimation';
 import Logo from './Logo';
-import { Shield, Heart, MessageCircle, BookOpen } from 'lucide-react';
+import { Shield, Heart, MessageCircle, BookOpen, ChevronDown } from 'lucide-react';
 import { useLanguage, Language } from '../contexts/LanguageContext';
 import { EXPERT_IMAGE } from '../constants';
 
@@ -11,6 +11,29 @@ const MotionDiv = motion.div as any;
 
 const Hero: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
+  const [count, setCount] = useState(0);
+
+  // Counter animation
+  useEffect(() => {
+    const duration = 2000;
+    const target = 100;
+    const steps = 50;
+    const increment = target / steps;
+    const stepTime = duration / steps;
+
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop";
@@ -191,7 +214,7 @@ const Hero: React.FC = () => {
                     <Heart className="w-4 h-4 text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-textDark text-sm">100+</p>
+                    <p className="font-semibold text-textDark text-sm">{count}+</p>
                     <p className="text-textMuted text-xs">{t('hero.supported')}</p>
                   </div>
                 </div>
@@ -200,6 +223,16 @@ const Hero: React.FC = () => {
           </MotionDiv>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <MotionDiv
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
+      >
+        <ChevronDown className="w-8 h-8 text-primary/50 hover:text-primary transition-colors" />
+      </MotionDiv>
     </section>
   );
 };

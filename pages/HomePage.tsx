@@ -5,6 +5,7 @@ import Bio from '../components/Bio';
 import Specializations from '../components/Specializations';
 import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
 import BibleQuote from '../components/BibleQuote';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
@@ -26,6 +27,7 @@ const HomePage: React.FC = () => {
       <Specializations />
       <HowItWorks />
       <Testimonials />
+      <FAQ />
       <BibleQuote />
       <ContactForm />
       <Footer />
