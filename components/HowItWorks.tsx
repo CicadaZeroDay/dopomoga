@@ -26,7 +26,7 @@ const HowItWorks: React.FC = () => {
           <h2 className="font-display font-semibold text-4xl md:text-5xl mb-4">
             {t('howItWorks.title')}
           </h2>
-          <p className="text-textMuted text-lg">{t('howItWorks.subtitle')}</p>
+          <p className="text-white/70 text-lg">{t('howItWorks.subtitle')}</p>
         </MotionDiv>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
@@ -51,7 +51,7 @@ const HowItWorks: React.FC = () => {
                 {t(`howItWorks.step${step.id}`)}
               </div>
               <h3 className="text-2xl font-bold mb-3">{t(`howItWorks.step${step.id}`)}</h3>
-              <p className="text-textMuted leading-relaxed max-w-xs">{t(`howItWorks.step${step.id}Desc`)}</p>
+              <p className="text-white/70 leading-relaxed max-w-xs">{t(`howItWorks.step${step.id}Desc`)}</p>
             </MotionDiv>
           ))}
         </div>
